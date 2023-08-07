@@ -1,0 +1,212 @@
+/* -----------------------------------
+
+colors
+
+ ----------------------------------- */
+
+//Primary
+$pink: hsl(353, 87%, 61%);
+$tomato: hsl(4, 100%, 67%);
+//neutral
+$dark-slate-grey: hsl(234, 29%, 20%);
+$charcoal-grey: hsl(235, 18%, 26%);
+$grey: hsl(231, 7%, 60%);
+$white: hsl(0, 0%, 100%);
+
+
+@mixin transition-background {
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+/* ------------end------------------*/
+
+
+/* -----------------------------------
+
+fonts
+
+ ----------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Roboto:wght@400;700&display=swap');
+
+$regular-font: 'Roboto', 'Poppins', Arial, sans-serif;
+$bold-font: "Roboto-Regular", Helvetica, Arial, sans-serif;
+
+@mixin regular-font {
+    font-family: $regular-font;
+    font-size: 16px;
+  }
+@mixin bold-font {
+    font-family: $bold-font;
+    font-weight: 700;
+  }
+  
+/* ------------end------------------*/
+
+  
+body {
+    @include regular-font;
+}
+
+h1 {
+    font-family: $bold-font;
+    color: $dark-slate-grey;
+}
+
+label {
+    font-size: 12px;
+    @include bold-font;
+    color: $dark-slate-grey;
+}
+
+input {
+    padding: 15px;
+    border-radius: 5px;
+    border: 0;
+}
+
+input[type="email"] {
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid $grey;
+    &:focus-visible {
+        border: 1px solid $white;
+    }
+    &:focus {
+        outline:  1px solid $dark-slate-grey;
+    }
+}
+
+
+.btn {
+    @include bold-font;
+    color: $white;
+    margin-top: 10px;
+    padding: 20px 10px;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right,$dark-slate-grey, $dark-slate-grey, $pink);
+    @include transition-background;
+    white-space: inherit;
+
+    &:hover {
+    background-position: 100% 0;
+    background-image: linear-gradient(to right, $dark-slate-grey, $tomato, $pink);
+    @include transition-background;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+    }
+}
+
+
+.sign-up-block {
+    display: flex;
+    background-color: $white;
+}
+
+.display-desktop, .display-mobile {
+    display: none;
+}
+
+#page {
+    display: flex;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.label-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 640px) {
+    .display-mobile {
+        display: block;
+    }
+
+    .sign-up-block {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .sign-up-block_text {
+        margin: 20px 8%;
+    }
+
+    .attribution {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 12px;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+  }
+@media screen and (min-width: 640px) {
+    body {
+        background-color: $dark-slate-grey; 
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    .sign-up-block {
+        border-radius: 15px;
+
+        padding: 15px;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .attribution {
+        position: absolute;
+        bottom: 10px;
+        color: $white;
+        a {
+            color: $white;
+        }
+    }
+
+    .display-desktop {
+        display: block;
+    }
+
+    .sign-up-block_text {
+        padding: 20px;
+        margin: auto;
+    }
+}
+a { 
+    color: $dark-slate-grey; 
+}
+
+.success-block {
+    display: none;
+}
