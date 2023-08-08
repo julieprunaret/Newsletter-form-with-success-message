@@ -50,21 +50,31 @@ $bold-font: "Roboto-Regular", Helvetica, Arial, sans-serif;
   
 body {
     @include regular-font;
+    min-height: 100vh;
 }
 
 h1 {
     font-family: $bold-font;
     color: $dark-slate-grey;
+    font-size: 3em;
+}
+
+
+.label-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    @include bold-font;
 }
 
 label {
-    font-size: 12px;
-    @include bold-font;
     color: $dark-slate-grey;
 }
 
-input {
-    border-radius: 5px;
+.error-message {
+    color: $tomato;
+    margin: 0;
 }
 
 input[type="email"] {
@@ -75,10 +85,18 @@ input[type="email"] {
         border: 1px solid $white;
     }
     &:focus {
-        outline:  1px solid $dark-slate-grey;
+        outline: 1px solid $dark-slate-grey;
     }
 }
 
+.errorInput {
+    background-color: $tomato-opacity;
+    color: $tomato;
+    border: 1px solid $tomato;
+    &:focus-visible, &:focus {
+        border: 1px solid $tomato;
+    }
+}
 
 .btn {
     @include bold-font;
@@ -88,15 +106,19 @@ input[type="email"] {
     cursor: pointer;
     text-align:center;
     border: none;
+    border-radius: 5px;
+    width: 100%;
+    white-space: inherit;
+
+    //animation
     background-size: 300% 100%;
     background-image: linear-gradient(to right,$dark-slate-grey, $dark-slate-grey, $pink);
     @include transition-background;
-    white-space: inherit;
-
+    
     &:hover {
-    background-position: 100% 0;
-    background-image: linear-gradient(to right, $dark-slate-grey, $tomato, $pink);
-    @include transition-background;
+        background-position: 100% 0;
+        background-image: linear-gradient(to right, $dark-slate-grey, $tomato, $pink);
+        @include transition-background;
     }
 }
 
@@ -113,18 +135,13 @@ ul {
     }
 }
 
-
-.sign-up-block {
+.general-block {
     display: flex;
     background-color: $white;
 }
 
 .display-desktop, .display-mobile {
     display: none;
-}
-
-#page {
-    display: flex;
 }
 
 form {
@@ -134,29 +151,20 @@ form {
     gap: 10px;
 }
 
-.label-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.email-value {
+    @include bold-font;
 }
 
-.error-message {
-    color: $tomato;
-    font-weight: 700;
+.attribution {
     font-size: 12px;
-    margin: 0;
 }
 
-.errorInput {
-    background-color: $tomato-opacity;
-    color: $tomato;
-    border: 1px solid $tomato;
-    &:focus-visible {
-        border: 1px solid $tomato;
-    }
-    &:focus {
-        outline:  1px solid $tomato;
-    }
+a { 
+    color: $dark-slate-grey; 
+}
+
+.success-block {
+    display: none;
 }
 
 @media screen and (max-width: 640px) {
@@ -164,44 +172,58 @@ form {
         display: block;
     }
 
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     .sign-up-block {
         flex-direction: column-reverse;
         width: 100%;
     }
 
-    .sign-up-block_text {
+    .block_text {
         margin: 20px 8%;
+    }
+
+    .success-block_text {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            max-width: 70px;
+        }
     }
 
     .attribution {
         width: 100%;
         text-align: center;
         padding: 10px 0;
-        font-size: 12px;
     }
-
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
   }
+
 @media screen and (min-width: 640px) {
+    .display-desktop {
+        display: block;
+    }
+
     body {
         background-color: $dark-slate-grey; 
-        min-height: 100vh;
         display: grid;
         place-items: center;
     }
 
-    .sign-up-block {
-        border-radius: 15px;
-
-        padding: 15px;
+    .general-block {
+        border-radius: 25px;
+        padding: 25px;
         margin: auto;
         gap: 20px;
+        &.success-block {
+            max-width: 450px;
+            padding: 10% 12%;
+        }
     }
 
     .attribution {
@@ -213,19 +235,8 @@ form {
         }
     }
 
-    .display-desktop {
-        display: block;
-    }
-
     .sign-up-block_text {
         padding: 20px;
         margin: auto;
     }
-}
-a { 
-    color: $dark-slate-grey; 
-}
-
-.success-block {
-    display: none;
 }

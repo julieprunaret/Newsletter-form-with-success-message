@@ -16,8 +16,8 @@
 <body>
   <div id="page">
     <!-- Sign-up form start -->
-    <div class="sign-up-block">
-      <div class="sign-up-block_text">
+    <div class="general-block sign-up-block">
+      <div class="sign-up-block_text block_text">
         <h1>Stay updated!</h1>
         <p>Join 60,000+ product managers receiving monthly updates on:</p>
         <ul>
@@ -25,7 +25,7 @@
           <li><img src="./assets/images/icon-list.svg" alt="check">Measuring to ensure updates are a success</li>
           <li><img src="./assets/images/icon-list.svg" alt="check">And much more!</li>
         </ul>
-        <form action="POST">
+        <form action="" id="emailForm">
           <div class="label-block">
             <label for="email">Email address</label>
             <p class="error-message"></p>
@@ -42,11 +42,14 @@
     <!-- Sign-up form end -->
 
     <!-- Success message start -->
-    <div class="success-block">
-      <h1>Thanks for subscribing!</h1>
-      <p>A confirmation email has been sent to ash@loremcompany.com. 
-      Please open it and click the button inside to confirm your subscription.</p>
-      <button class="btn">Dismiss message</button>
+    <div class="general-block success-block block_text">
+      <div class="success-block_text">
+        <img src="./assets/images/icon-success.svg" alt="check">
+        <h1>Thanks for subscribing!</h1>
+        <p>A confirmation email has been sent to <span class="email-value"></span> 
+        Please open it and click the button inside to confirm your subscription.</p>
+      </div>
+      <button class="btn" id="dismiss-button">Dismiss message</button>
     </div>
 
     
