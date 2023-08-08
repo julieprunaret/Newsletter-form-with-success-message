@@ -7,6 +7,8 @@ colors
 //Primary
 $pink: hsl(353, 87%, 61%);
 $tomato: hsl(4, 100%, 67%);
+
+$tomato-opacity: hsla(4, 100%, 67%, 0.217);
 //neutral
 $dark-slate-grey: hsl(234, 29%, 20%);
 $charcoal-grey: hsl(235, 18%, 26%);
@@ -62,9 +64,7 @@ label {
 }
 
 input {
-    padding: 15px;
     border-radius: 5px;
-    border: 0;
 }
 
 input[type="email"] {
@@ -138,6 +138,25 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.error-message {
+    color: $tomato;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0;
+}
+
+.errorInput {
+    background-color: $tomato-opacity;
+    color: $tomato;
+    border: 1px solid $tomato;
+    &:focus-visible {
+        border: 1px solid $tomato;
+    }
+    &:focus {
+        outline:  1px solid $tomato;
+    }
 }
 
 @media screen and (max-width: 640px) {

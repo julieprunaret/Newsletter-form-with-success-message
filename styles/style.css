@@ -29,9 +29,7 @@ label {
 }
 
 input {
-  padding: 15px;
   border-radius: 5px;
-  border: 0;
 }
 
 input[type=email] {
@@ -102,6 +100,25 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.error-message {
+  color: hsl(4, 100%, 67%);
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0;
+}
+
+.errorInput {
+  background-color: hsla(4, 100%, 67%, 0.217);
+  color: hsl(4, 100%, 67%);
+  border: 1px solid hsl(4, 100%, 67%);
+}
+.errorInput:focus-visible {
+  border: 1px solid hsl(4, 100%, 67%);
+}
+.errorInput:focus {
+  outline: 1px solid hsl(4, 100%, 67%);
 }
 
 @media screen and (max-width: 640px) {
